@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+
+  api:
+    build:
+      context: ./transparent-store-api
+      dockerfile: ./Dockerfile
+    ports:
+      - 8000:8000
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1000M
+    restart: always
+    networks:
+      - transparent-store
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "2"
+    volumes:
+      - ./transparent-store-api:/code
+    #   - front_node_modules:/data/app/node_modules
+    #   - front_dot_next:/data/app/.next
+
+networks:
+  transparent-store:
