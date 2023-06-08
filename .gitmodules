@@ -1,0 +1,6 @@
+[submodule "transparent-store-api"]
+	path = transparent-store-api
+	url = ../transparent-store-api
+[submodule "transparent-store-front"]
+	path = transparent-store-front
+	url = ../transparent-store-front
