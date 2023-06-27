@@ -25,5 +25,24 @@ services:
     #   - front_node_modules:/data/app/node_modules
     #   - front_dot_next:/data/app/.next
 
+  db:
+    image: mariadb:11
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: test
+    ports:
+      - 3306:3306
+    networks:
+      - transparent-store
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "2"
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - ./mysql:/var/lib/mysql
+
 networks:
   transparent-store:
